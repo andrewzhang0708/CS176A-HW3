@@ -82,8 +82,8 @@ int main(int argc, char *argv[]) {
             double rtt = recv_time - send_time;
             rtts[i] = rtt;
             received++;
-            printf("PING reveived from %s: seq#=%d\n",
-                   inet_ntoa(from.sin_addr), i + 1, rtt);
+            printf("PING received from %s: seq#=%d\n",
+                   inet_ntoa(from.sin_addr), i + 1);
         }
         sleep(1);
     }
