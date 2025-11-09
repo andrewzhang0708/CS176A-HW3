@@ -75,14 +75,14 @@ int main(int argc, char *argv[]) {
         double recv_time = get_time_in_ms();
 
         if (n < 0) {
-            printf("Request timeout for seq #%d\n", i + 1);
+            printf("Request timeout for seq#=%d\n", i + 1);
             rtts[i] = -1;
         } else {
             buffer[n] = '\0';
             double rtt = recv_time - send_time;
             rtts[i] = rtt;
             received++;
-            printf("PING reply from %s: seq=%d time=%.3f ms\n",
+            printf("PING reveived from %s: seq#=%d\n",
                    inet_ntoa(from.sin_addr), i + 1, rtt);
         }
         sleep(1);
