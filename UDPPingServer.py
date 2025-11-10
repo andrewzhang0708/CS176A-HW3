@@ -13,7 +13,7 @@ while True:
     # Receive the client packet along with the address it is coming from
     message, address = serverSocket.recvfrom(1024)
     # If rand is less is than 4, we consider the packet lost and do not respond
-    if rand < 4:
+    if rand < 88:
         continue
     # Otherwise, the server responds
     serverSocket.sendto(message, address)
