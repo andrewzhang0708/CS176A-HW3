@@ -84,7 +84,11 @@ int main(int argc, char *argv[]) {
             double rtt = recv_time - send_time;
             rtts[i] = rtt;
             received++;
-            printf("PING received from %s: seq#=%d\n", argv[1], i + 1);
+            printf("PING received from ");
+            printf("%s", argv[1]);
+            printf(": seq#=");
+            printf("%d", i + 1);
+            printf("\n");
             fflush(stdout);
         }
         sleep(1);
