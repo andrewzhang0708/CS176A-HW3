@@ -85,8 +85,9 @@ int main(int argc, char *argv[]) {
             rtts[i] = rtt;
             received++;
             printf("PING received from ");
-            printf("%s", argv[1]);
             printf(": seq#=");
+            printf("%s", argv[1]);
+            // printf(": seq#=");
             printf("%d", i + 1);
             printf("\n");
             fflush(stdout);
