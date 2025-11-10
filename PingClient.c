@@ -83,7 +83,7 @@ int main(int argc, char *argv[]) {
             double rtt = recv_time - send_time;
             rtts[i] = rtt;
             received++;
-            printf("PING received from 127.0.0.1: seq#=1");
+            printf("PING received from 127.0.0.1: seq#=1\n");
             fflush(stdout);
         }
         sleep(1);
