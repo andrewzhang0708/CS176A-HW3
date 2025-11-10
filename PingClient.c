@@ -64,7 +64,7 @@ int main(int argc, char *argv[]) {
     for (int i = 0; i < NUM_PINGS; i++) {
         double send_time = get_time_in_ms();
 
-        sprintf(buffer, "PING %d %f", i + 1, send_time);
+        // sprintf(buffer, "PING %d %f", i + 1, send_time);
 
         n = sendto(sock, buffer, strlen(buffer), 0, (struct sockaddr *)&server, serverlen);
         if (n < 0)
@@ -83,7 +83,7 @@ int main(int argc, char *argv[]) {
             double rtt = recv_time - send_time;
             rtts[i] = rtt;
             received++;
-            printf("PING received from 127.0.0.1: seq#=1\n");
+            printf("PING received from %s: seq#=%d\n", argv[1], i + 1);
             fflush(stdout);
         }
         sleep(1);
