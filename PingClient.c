@@ -56,7 +56,7 @@ int main(int argc, char *argv[]) {
     server.sin_port = htons(portno);
     serverlen = sizeof(server);
 
-    printf("PING %s:%d with %d packets:\n", argv[1], portno, NUM_PINGS);
+    // printf("PING %s:%d with %d packets:\n", argv[1], portno, NUM_PINGS);
 
     double rtts[NUM_PINGS];
     int received = 0;
@@ -97,7 +97,7 @@ int main(int argc, char *argv[]) {
         }
     }
 
-    printf("\n--- %s ping statistics ---\n", argv[1]);
+    printf("--- %s ping statistics ---\n", argv[1]);
     printf("%d packets transmitted, %d received, %.0f%% packet loss\n",
            NUM_PINGS, received, 100.0 * (NUM_PINGS - received) / NUM_PINGS);
 
