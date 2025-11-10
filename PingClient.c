@@ -22,7 +22,7 @@ double get_time_in_ms() {
 
 void print_ping_response(int seq_num) {
     char buffer[100];
-    snprintf(buffer, sizeof(buffer), "PING received from hello hahaha hehehe1 lololo2 127.0.0.1: seq#=%d\n", seq_num);
+    snprintf(buffer, sizeof(buffer), "PING received from hello hahaha hehehe1 lololo2 123456790 127.0.0.1: seq#=%d\n", seq_num);
     fwrite(buffer, strlen(buffer), 1, stdout);
     fflush(stdout);
 }
