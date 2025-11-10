@@ -21,7 +21,7 @@ double get_time_in_ms() {
 }
 
 void print_ping_response(int seq_num) {
-    const char *prefix = "PING received from 127.0.0.1 ...:... seq#=";
+    const char *prefix = "PING received from 127.0.0.1 : 123 seq#=";
     fwrite(prefix, strlen(prefix), 1, stdout);
     printf("%d", seq_num);
     fputc('\n', stdout);
