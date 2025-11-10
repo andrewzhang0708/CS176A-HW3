@@ -84,7 +84,7 @@ int main(int argc, char *argv[]) {
             rtts[i] = rtt;
             received++;
             printf("PING received from %s: seq#=%d\n",
-                   inet_ntoa(from.sin_addr), i + 1);
+                   argv[1], i + 1);
         }
         sleep(1);
     }
