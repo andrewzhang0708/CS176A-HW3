@@ -84,12 +84,9 @@ int main(int argc, char *argv[]) {
             double rtt = recv_time - send_time;
             rtts[i] = rtt;
             received++;
-            printf("PING received from ");
-            printf(": seq#=");
-            printf("%s", argv[1]);
-            // printf(": seq#=");
-            printf("%d", i + 1);
-            printf("\n");
+            char ip_str[INET_ADDRSTRLEN];
+            inet_ntop(AF_INET, &(from.sin_addr), ip_str, INET_ADDRSTRLEN);
+            printf("PING received from %s: seq#=%d\n", ip_str, i + 1);
             fflush(stdout);
         }
         sleep(1);
