@@ -26,7 +26,7 @@ int main(int argc, char *argv[]) {
     struct sockaddr_in server, from;
     struct hostent *hp;
     socklen_t serverlen;
-    char buffer[2048];
+    char buffer[100000];
 
     const int TIMEOUT_SEC = 1;
     const int NUM_PINGS = 10;
@@ -64,7 +64,7 @@ int main(int argc, char *argv[]) {
     for (int i = 0; i < NUM_PINGS; i++) {
         double send_time = get_time_in_ms();
 
-        // sprintf(buffer, "PING %d %f", i + 1, send_time);
+        sprintf(buffer, "PING %d %f", i + 1, send_time);
 
         n = sendto(sock, buffer, strlen(buffer), 0, (struct sockaddr *)&server, serverlen);
         if (n < 0)
