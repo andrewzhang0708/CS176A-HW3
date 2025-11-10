@@ -26,7 +26,7 @@ int main(int argc, char *argv[]) {
     struct sockaddr_in server, from;
     struct hostent *hp;
     socklen_t serverlen;
-    char buffer[1024];
+    char buffer[2048];
 
     const int TIMEOUT_SEC = 1;
     const int NUM_PINGS = 10;
@@ -83,7 +83,7 @@ int main(int argc, char *argv[]) {
             double rtt = recv_time - send_time;
             rtts[i] = rtt;
             received++;
-            printf("PING received frommmmmmmmmmmmmmmmmmmmmmmmabcdefg127.0.0.1: seq#=%d\n", i + 1);
+            printf("PING received from 127.0.0.1: seq#=%d\n", i + 1);
             fflush(stdout);
         }
         sleep(1);
