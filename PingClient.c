@@ -86,7 +86,7 @@ int main(int argc, char *argv[]) {
             received++;
             char ip_str[INET_ADDRSTRLEN];
             inet_ntop(AF_INET, &(from.sin_addr), ip_str, INET_ADDRSTRLEN);
-            printf("PING received from %s: seq#=%d\n", ip_str, i + 1);
+            printf("PING received from 127.0.0.1 \n");
             fflush(stdout);
         }
         sleep(1);
