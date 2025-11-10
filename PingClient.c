@@ -26,7 +26,8 @@ int main(int argc, char *argv[]) {
     struct sockaddr_in server, from;
     struct hostent *hp;
     socklen_t serverlen;
-    char buffer[100000];
+    char send_buffer[256];
+    char recv_buffer[2048];
 
     const int TIMEOUT_SEC = 1;
     const int NUM_PINGS = 10;
@@ -64,26 +65,26 @@ int main(int argc, char *argv[]) {
     for (int i = 0; i < NUM_PINGS; i++) {
         double send_time = get_time_in_ms();
 
-        sprintf(buffer, "PING %d %f", i + 1, send_time);
+        sprintf(send_buffer, "PING %d %f", i + 1, send_time);
 
-        n = sendto(sock, buffer, strlen(buffer), 0, (struct sockaddr *)&server, serverlen);
+        n = sendto(sock, send_buffer, strlen(send_buffer), 0, (struct sockaddr *)&server, serverlen);
         if (n < 0)
             error("sendto");
 
-        bzero(buffer, sizeof(buffer));
+        bzero(recv_buffer, sizeof(recv_buffer));
         socklen_t fromlen = sizeof(from);
-        n = recvfrom(sock, buffer, sizeof(buffer) - 1, 0, (struct sockaddr *)&from, &fromlen);
+        n = recvfrom(sock, recv_buffer, sizeof(recv_buffer) - 1, 0, (struct sockaddr *)&from, &fromlen);
         double recv_time = get_time_in_ms();
 
         if (n < 0) {
             printf("Request timeout for seq#=%d\n", i + 1);
             rtts[i] = -1;
         } else {
-            buffer[n] = '\0';
+            recv_buffer[n] = '\0';
             double rtt = recv_time - send_time;
             rtts[i] = rtt;
             received++;
-            printf("PING received from %s: seq#=%d\n", argv[1], i + 1);
+            printf("PING received from %s: seq#=%d\n", inet_ntoa(from.sin_addr), i + 1);
             fflush(stdout);
         }
         sleep(1);
