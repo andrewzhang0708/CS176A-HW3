@@ -71,7 +71,8 @@ int main(int argc, char *argv[]) {
             error("sendto");
 
         bzero(buffer, sizeof(buffer));
-        n = recvfrom(sock, buffer, sizeof(buffer) - 1, 0, (struct sockaddr *)&from, &serverlen);
+        socklen_t fromlen = sizeof(from);
+        n = recvfrom(sock, buffer, sizeof(buffer) - 1, 0, (struct sockaddr *)&from, &fromlen);
         double recv_time = get_time_in_ms();
 
         if (n < 0) {
