@@ -10,6 +10,7 @@ serverSocket.bind(('', 12000))
 while True:
     # Generate random number in the range of 0 to 10
     rand = random.randint(0, 10)
+    print(rand)
     # Receive the client packet along with the address it is coming from
     message, address = serverSocket.recvfrom(1024)
     # If rand is less is than 4, we consider the packet lost and do not respond
